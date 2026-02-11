@@ -159,7 +159,8 @@ class SonarAIAgent:
             logger.info(f"📝 Code Context: code_context.json")
             if springboot_success:
                 logger.info(f"🚀 Optimized Spring Boot Project: spring-boot-optimized/")
-                logger.info(f"🌿 Branch: bot")
+                logger.info(f"🌿 Branch: boot")
+                logger.info(f"🌐 GitHub: https://github.com/Jawher-0129/PaiementManagement/tree/boot")
             
             if self.config.dry_run:
                 logger.info("\n⚠️  DRY RUN MODE - No changes were applied")
