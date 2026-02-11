@@ -17,6 +17,7 @@ from .analyzer.gemini_client import GeminiClient
 from .patcher.patch_validator import PatchValidator
 from .patcher.patch_applier import PatchApplier
 from .report.generator import ReportGenerator
+from .generator.springboot_generator import SpringBootGenerator
 from .utils.logger import setup_root_logger, get_logger
 
 logger = get_logger(__name__)
@@ -141,6 +142,14 @@ class SonarAIAgent:
                 dry_run=self.config.dry_run,
             )
             
+            # Step 8: Generate Optimized Spring Boot Project
+            logger.info("\n🚀 Step 8: Generating Optimized Spring Boot Project...")
+            springboot_generator = SpringBootGenerator(
+                repo_path=self.config.repo_path,
+                output_path="spring-boot-optimized"
+            )
+            springboot_success = springboot_generator.analyze_and_generate(sonar_data, analysis)
+            
             # Summary
             logger.info("\n" + "=" * 60)
             logger.info("✅ Analysis Complete!")
@@ -148,6 +157,9 @@ class SonarAIAgent:
             logger.info(f"📊 Report: {report_path}")
             logger.info(f"📦 SonarQube Data: sonar_bundle.json")
             logger.info(f"📝 Code Context: code_context.json")
+            if springboot_success:
+                logger.info(f"🚀 Optimized Spring Boot Project: spring-boot-optimized/")
+                logger.info(f"🌿 Branch: bot")
             
             if self.config.dry_run:
                 logger.info("\n⚠️  DRY RUN MODE - No changes were applied")
