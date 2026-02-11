@@ -1,0 +1,11 @@
+# Core dependencies
+requests>=2.31.0
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+
+# JSON & Data processing
+pydantic>=2.5.0
+
+# Type checking (dev)
+mypy>=1.7.0
+types-requests>=2.31.0

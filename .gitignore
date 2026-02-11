@@ -1,0 +1,37 @@
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+
+# Output files
+sonar_bundle.json
+code_context.json
+sonar_ai_report.md
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
