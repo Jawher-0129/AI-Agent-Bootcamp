@@ -80,7 +80,7 @@ class SpringBootGenerator:
             self._generate_readme(project_path, project_config, analysis)
             
             # Create Git branch and push to GitHub
-            logger.info("\n🌿 Creating 'boot' branch and pushing to GitHub...")
+            logger.info("\n🌿 Creating 'boot1' branch and pushing to GitHub...")
             self._create_and_push_branch(project_path)
             
             logger.info("\n✅ Spring Boot project generated successfully!")
@@ -1734,7 +1734,7 @@ For questions or issues, please contact the development team.
         logger.info("  ✓ Generated: README.md")
     
     def _create_and_push_branch(self, project_path: str):
-        """Create 'boot' branch with the optimized project and push to GitHub"""
+        """Create 'boot1' branch with the optimized project and push to GitHub"""
         try:
             # Initialize git if needed
             if not os.path.exists(f"{project_path}/.git"):
@@ -1813,9 +1813,9 @@ For questions or issues, please contact the development team.
             else:
                 logger.info(f"  ℹ️ Remote origin already exists")
             
-            # Check if boot branch exists locally
+            # Check if boot1 branch exists locally
             branch_check = subprocess.run(
-                ["git", "rev-parse", "--verify", "boot"],
+                ["git", "rev-parse", "--verify", "boot1"],
                 cwd=project_path,
                 capture_output=True,
                 text=True
@@ -1824,28 +1824,28 @@ For questions or issues, please contact the development team.
             if branch_check.returncode == 0:
                 # Branch exists, just checkout
                 subprocess.run(
-                    ["git", "checkout", "boot"],
+                    ["git", "checkout", "boot1"],
                     cwd=project_path,
                     check=True,
                     capture_output=True
                 )
-                logger.info("  ✓ Switched to existing 'boot' branch")
+                logger.info("  ✓ Switched to existing 'boot1' branch")
             else:
                 # Branch doesn't exist, create it
                 subprocess.run(
-                    ["git", "checkout", "-b", "boot"],
+                    ["git", "checkout", "-b", "boot1"],
                     cwd=project_path,
                     check=True,
                     capture_output=True
                 )
-                logger.info("  ✓ Created 'boot' branch")
+                logger.info("  ✓ Created 'boot1' branch")
             
             # Push to GitHub
             logger.info("  📤 Pushing to GitHub...")
             
             # Try to push (may fail if branch exists on remote with different history)
             result = subprocess.run(
-                ["git", "push", "-u", "origin", "boot"],
+                ["git", "push", "-u", "origin", "boot1"],
                 cwd=project_path,
                 capture_output=True,
                 text=True,
@@ -1856,7 +1856,7 @@ For questions or issues, please contact the development team.
             if result.returncode != 0 and ("rejected" in result.stderr or "diverged" in result.stderr):
                 logger.info("  🔄 Branch exists on remote, force pushing...")
                 result = subprocess.run(
-                    ["git", "push", "-u", "origin", "boot", "--force"],
+                    ["git", "push", "-u", "origin", "boot1", "--force"],
                     cwd=project_path,
                     capture_output=True,
                     text=True,
